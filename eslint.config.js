@@ -3,8 +3,8 @@ import globals from 'globals';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
-import importPlugin from 'eslint-plugin-import';
 import pluginJs from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
 
 // mimic CommonJS variables -- not needed if using CommonJS
 const __filename = fileURLToPath(import.meta.url);
