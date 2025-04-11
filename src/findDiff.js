@@ -17,7 +17,7 @@ const findDiff = (data1, data2) => {
     }
     return diff;
   });
-  console.log(diff);
+  return diff;
 };
 
 export default findDiff;
