@@ -15,7 +15,7 @@ program
   .argument('<filepath2>', 'path to the second file')
   .action((filepath1, filepath2) => {
     const [data1, data2] = parserJson(filepath1, filepath2);
-    findDiff(data1, data2);
+    console.log(findDiff(data1, data2));
   });
 
 program.parse();
