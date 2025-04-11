@@ -11,9 +11,11 @@ program
   .description('Compares two configuration files and shows a difference.')
   .version('0.0.1')
   .option('-f, --format [type]', 'output format')
-  .argument('<filepath1>', 'path to first file')
-  .argument('<filepath2>', 'path to second file')
-  .action((filepath1, filepath2) => parserJson(filepath1, filepath2))
-  .action((filepath1, filepath2) => findDiff(filepath1, filepath2));
+  .argument('<filepath1>', 'path to the first file')
+  .argument('<filepath2>', 'path to the second file')
+  .action((filepath1, filepath2) => {
+    const [data1, data2] = parserJson(filepath1, filepath2);
+    findDiff(data1, data2);
+  });
 
 program.parse();
