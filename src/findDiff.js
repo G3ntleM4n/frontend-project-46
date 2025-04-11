@@ -1,30 +1,19 @@
 import _ from 'lodash';
-import parserJson from './parser.js';
 
-const genDiff = (data, key, symbol = '') => `${symbol} ${key}: ${data[key]}`.trimStart();
-
-const findDiff = (filepath1, filepath2) => {
-  const [data1, data2] = parserJson(filepath1, filepath2);
-  const keys = _.union(Object.keys(data1), Object.keys(data2));
+const findDiff = (data1, data2) => {
+  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
   const diff = {};
-  let keyDiff;
-  let dataDiff;
   keys.map((key) => {
     if (!Object.hasOwn(data1, key)) {
-      [keyDiff, dataDiff] = genDiff(data2, key, '+').split(': ');
-      diff[keyDiff] = dataDiff;
+      diff[`+ ${key}`] = data2[key];
     } else if (!Object.hasOwn(data2, key)) {
-      [keyDiff, dataDiff] = genDiff(data1, key, '-').split(': ');
-      diff[keyDiff] = dataDiff;
+      diff[`- ${key}`] = data1[key];
     } else if (data1[key] !== data2[key]) {
-      [keyDiff, dataDiff] = genDiff(data1, key, '-').split(': ');
-      diff[keyDiff] = dataDiff;
-      [keyDiff, dataDiff] = genDiff(data2, key, '+').split(': ');
-      diff[keyDiff] = dataDiff;
+      diff[`- ${key}`] = data1[key];
+      diff[`+ ${key}`] = data2[key];
     } else {
-      [keyDiff, dataDiff] = genDiff(data2, key).split(': ');
-      diff[keyDiff] = dataDiff;
+      diff[`  ${key}`] = data2[key];
     }
     return diff;
   });
