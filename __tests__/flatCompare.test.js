@@ -1,34 +1,35 @@
-import findDiff from '../src/findDiff.js';
+import path from 'node:path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import parserJson from '../src/parser.js';
+import findDiff from '../src/flatCompare.js';
 
-const parsedJson1 = {
-  host: 'hexlet.io',
-  timeout: 50,
-  proxy: '123.234.53.22',
-  follow: false,
-};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const parsedJson2 = {
-  timeout: 20,
-  verbose: true,
-  host: 'hexlet.io',
-};
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-test('parserTest', () => {
-  expect(parserJson('./files/file1.json', './files/file2.json')).toEqual([parsedJson1, parsedJson2]);
+let object1;
+let object2;
+let filepath1;
+let filepath2;
+let result;
+
+beforeAll(() => {
+  filepath1 = getFixturePath('testFile1.json');
+  filepath2 = getFixturePath('testFile2.json');
+
+  [object1, object2] = parserJson(filepath1, filepath2);
+  result = {
+    '- follow': false,
+    '  host': 'hexlet.io',
+    '- proxy': '123.234.53.22',
+    '- timeout': 50,
+    '+ timeout': 20,
+    '+ verbose': true,
+  };
 });
 
-const [o1, o2] = parserJson('./files/file1.json', './files/file2.json');
-
-const result = {
-  '- follow': false,
-  '  host': 'hexlet.io',
-  '- proxy': '123.234.53.22',
-  '- timeout': 50,
-  '+ timeout': 20,
-  '+ verbose': true,
-};
-
 test('diffTest', () => {
-  expect(findDiff(o1, o2)).toEqual(result);
+  expect(findDiff(object1, object2)).toStrictEqual(result);
 });
