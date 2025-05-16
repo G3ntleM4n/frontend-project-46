@@ -1,0 +1,17 @@
+name: test and lint
+on: push
+jobs:
+  test_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+
+      - name: run tests
+        run: make test
+      - name: run linter
+        run: make lint
