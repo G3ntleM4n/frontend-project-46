@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import parserJson from '../src/parser.js';
-import findDiff from '../src/findDiff.js';
+import findDiff from '../src/flatCompare.js';
 
 const program = new Command();
 
