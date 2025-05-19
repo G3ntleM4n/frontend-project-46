@@ -17,9 +17,3 @@ jobs:
         run: make lint
       - name: run tests
         run: make test
-      - name: upload code coverage
-        uses: xylabs/action-code-climate-test-reporter@v1.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          subcommand: "upload-coverage"
