@@ -5,7 +5,7 @@ test:
 	npm run test
 
 test-coverage:
-	node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js --coverage
+	npm run test-coverage
 
 lint:
 	npx eslint .
