@@ -18,7 +18,7 @@ jobs:
       - name: run tests
         run: make test
       - name: upload code coverage
-        uses: /actions/cc-test-reporter
+        uses: actions/cc-test-reporter
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
