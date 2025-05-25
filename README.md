@@ -8,3 +8,6 @@
 
 ### Flat JSON comparison
 [![asciicast](https://asciinema.org/a/idbA5MkVuJlOuJ0lnj3f6G40N.svg)](https://asciinema.org/a/idbA5MkVuJlOuJ0lnj3f6G40N)
+
+### Flat YAML comparison
+[![asciicast](https://asciinema.org/a/YBy615kMxqg2B3pGwcOoqT6JX.svg)](https://asciinema.org/a/YBy615kMxqg2B3pGwcOoqT6JX)
