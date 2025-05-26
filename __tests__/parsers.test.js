@@ -29,10 +29,10 @@ beforeEach(() => {
     host: 'hexlet.io',
   };
 
-  filepath1 = getFixturePath('testFile1.json');
-  filepath2 = getFixturePath('testFile2.json');
-  filepath3 = getFixturePath('testYaml1.yml');
-  filepath4 = getFixturePath('testYaml2.yaml');
+  filepath1 = getFixturePath('flat1.json');
+  filepath2 = getFixturePath('flat2.json');
+  filepath3 = getFixturePath('flat3.yml');
+  filepath4 = getFixturePath('flat4.yaml');
 });
 
 test('parserJsonTest', () => {
