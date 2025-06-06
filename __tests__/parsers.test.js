@@ -15,7 +15,7 @@ let filepath4;
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-beforeEach(() => {
+beforeAll(() => {
   parsedFirst = {
     host: 'hexlet.io',
     timeout: 50,
