@@ -4,6 +4,7 @@ import path from 'node:path';
 import { Command } from 'commander';
 import { parserJson, parserYml } from '../src/parsers.js';
 import findDiff from '../src/flatCompare.js';
+import stylishOutput from '../src/outputStyles.js';
 
 const program = new Command();
 
@@ -31,7 +32,7 @@ program
     } else {
       data2 = parserYml(filepath2);
     }
-    console.log(findDiff(data1, data2));
+    stylishOutput(findDiff(data1, data2), 2);
   });
 
 program.parse();
