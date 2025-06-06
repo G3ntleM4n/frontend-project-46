@@ -7,7 +7,7 @@
 
 
 ### Flat JSON comparison
-[![asciicast](https://asciinema.org/a/idbA5MkVuJlOuJ0lnj3f6G40N.svg)](https://asciinema.org/a/idbA5MkVuJlOuJ0lnj3f6G40N)
+[![asciicast](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo.svg)](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo)
 
 ### Flat YAML comparison
-[![asciicast](https://asciinema.org/a/YBy615kMxqg2B3pGwcOoqT6JX.svg)](https://asciinema.org/a/YBy615kMxqg2B3pGwcOoqT6JX)
+[![asciicast](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu.svg)](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu)
