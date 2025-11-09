@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 import path from 'node:path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
