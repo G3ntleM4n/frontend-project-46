@@ -3,7 +3,7 @@
 import path from 'node:path';
 import { Command } from 'commander';
 import { parserJson, parserYml } from '../src/parsers.js';
-import stylishOutput from '../src/outputStyles.js';
+// import stylishOutput from '../src/outputStyles.js';
 // import findDiffFlat from '../src/flatCompare.js';
 import findDiffNested from '../src/nestedCompare.js';
 
