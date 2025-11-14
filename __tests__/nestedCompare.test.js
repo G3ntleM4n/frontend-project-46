@@ -14,22 +14,13 @@ let object1;
 let object2;
 let object3;
 let object4;
-let filepath1;
-let filepath2;
-let filepath3;
-let filepath4;
 let diff;
 
 beforeAll(() => {
-  filepath1 = getFixturePath('testNested1.json');
-  filepath2 = getFixturePath('testNested2.json');
-  filepath3 = getFixturePath('testNested3.yml');
-  filepath4 = getFixturePath('testNested4.yaml');
-
-  object1 = parserJson(filepath1);
-  object2 = parserJson(filepath2);
-  object3 = parserYml(filepath3);
-  object4 = parserYml(filepath4);
+  object1 = parserJson(getFixturePath('testNested1.json'));
+  object2 = parserJson(getFixturePath('testNested2.json'));
+  object3 = parserYml(getFixturePath('testNested3.yml'));
+  object4 = parserYml(getFixturePath('testNested4.yaml'));
   diff = {
     '  common': {
       '+ follow': false,
@@ -79,6 +70,4 @@ beforeAll(() => {
 test('nested differences test', () => {
   expect(findDiffNested(object1, object2)).toStrictEqual(diff);
   expect(findDiffNested(object3, object4)).toStrictEqual(diff);
-  // expect(findDiff(object1, object3)).toStrictEqual(diffSame1);
-  // expect(findDiff(object2, object4)).toStrictEqual(diffSame2);
 });

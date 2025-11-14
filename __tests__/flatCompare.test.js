@@ -13,24 +13,16 @@ let object1;
 let object2;
 let object3;
 let object4;
-let filepath1;
-let filepath2;
-let filepath3;
-let filepath4;
 let diff;
 let diffSame1;
 let diffSame2;
 
 beforeAll(() => {
-  filepath1 = getFixturePath('testFlat1.json');
-  filepath2 = getFixturePath('testFlat2.json');
-  filepath3 = getFixturePath('testFlat3.yml');
-  filepath4 = getFixturePath('testFlat4.yaml');
+  object1 = parserJson(getFixturePath('testFlat1.json'));
+  object2 = parserJson(getFixturePath('testFlat2.json'));
+  object3 = parserYml(getFixturePath('testFlat3.yml'));
+  object4 = parserYml(getFixturePath('testFlat4.yaml'));
 
-  object1 = parserJson(filepath1);
-  object2 = parserJson(filepath2);
-  object3 = parserYml(filepath3);
-  object4 = parserYml(filepath4);
   diff = {
     '- follow': false,
     '  host': 'hexlet.io',
