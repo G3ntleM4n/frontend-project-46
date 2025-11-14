@@ -5,9 +5,6 @@ const findDiffNested = (data1, data2) => {
     const diff = {};
     const keys = _.sortBy(_.union(Object.keys(d1), Object.keys(d2)));
 
-    /* console.log('keys: ', keys);
-    console.log('\n\n\n'); */
-
     keys.map((key) => {
       if (!Object.hasOwn(d1, key)) {
         diff[`+ ${key}`] = d2[key];
@@ -23,13 +20,13 @@ const findDiffNested = (data1, data2) => {
       } else {
         diff[`  ${key}`] = d1[key];
       }
-      // console.log('this level diff: ', diff);
+
       return diff;
     });
+
     return diff;
   };
   const globalDiff = iter(data1, data2);
-  console.log(globalDiff);
   return globalDiff;
 };
 
