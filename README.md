@@ -11,3 +11,6 @@
 
 ### Flat YAML comparison
 [![asciicast](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu.svg)](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu)
+
+### Nested JSON & YAML comparison
+[![asciicast](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew.svg)](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew)
