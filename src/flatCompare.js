@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 const findDiffFlat = (data1, data2) => {
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
-  console.log(JSON.stringify(keys, null, 2));
 
   const diff = {};
   keys.map((key) => {
@@ -20,7 +19,6 @@ const findDiffFlat = (data1, data2) => {
     return diff;
   });
 
-  console.log(diff);
   return diff;
 };
 
