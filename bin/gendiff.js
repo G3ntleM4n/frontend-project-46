@@ -3,8 +3,7 @@
 import path from 'node:path';
 import { Command } from 'commander';
 import { parserJson, parserYml } from '../src/parsers.js';
-// import stylishOutput from '../src/outputStyles.js';
-// import findDiffFlat from '../src/flatCompare.js';
+import stylishOutput from '../src/outputStyles.js';
 import findDiffNested from '../src/nestedCompare.js';
 
 const program = new Command();
@@ -33,9 +32,9 @@ program
     } else {
       data2 = parserYml(filepath2);
     }
-    // stylishOutput(findDiffFlat(data1, data2), 2);
-    findDiffNested(data1, data2);
-    // stylishOutput(findDiffNested(data1, data2), data1);
+    const result = stylishOutput(findDiffNested(data1, data2));
+    console.log(result);
+    return result;
   });
 
 program.parse();
