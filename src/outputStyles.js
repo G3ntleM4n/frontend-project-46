@@ -1,10 +1,12 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 export const stylishOutput = (object, spacesCount = 2, prefix = ' ') => {
   let result = '{\n';
+  const startsWithSpecSymbol = /^(\+|-| )/; // if string starts with '+' or '-' or space
   const iter = (node, depth) => {
     let diff = '';
     Object.entries(node).forEach(([key, value]) => {
-      if (key.search(/^(\+|-| )/) !== -1) { // if key starts with '+' or '-' or space
+      if (key.search(startsWithSpecSymbol) !== -1) {
         if (typeof value === 'object' && value !== null) {
           const dive = iter(value, depth + 2);
           diff += `${prefix.repeat(spacesCount * depth)}${key}: {\n`;
@@ -31,17 +33,16 @@ export const stylishOutput = (object, spacesCount = 2, prefix = ' ') => {
 
   result += iter(object, 1);
   result += '}';
-  // console.log(result);
   return result;
 };
 
-const makePath = (path, endpoint) => (path !== '' ? `${path}.${endpoint}` : `${endpoint}`);
+const makePath = (path, endpoint) => (path.length > 0 ? `${path}.${endpoint}` : `${endpoint}`);
 
 export const plainOutput = (object) => {
   let result = '';
 
-  const iter = (obj, path = '') => {
-    Object.entries(obj).reduce((acc, [key, value]) => {
+  const iter = (obj, path = '', acc = []) => {
+    Object.entries(obj).map(([key, value]) => {
       const endpoint = makePath(path, key.slice(2));
 
       if (key.startsWith(' ')) {
@@ -50,9 +51,10 @@ export const plainOutput = (object) => {
           acc = [];
         }
         if (typeof value !== 'object') {
-          return [];
+          acc = [];
+          return;
         }
-        iter(value, endpoint);
+        iter(value, endpoint, acc);
       }
 
       switch (typeof value) {
@@ -73,30 +75,30 @@ export const plainOutput = (object) => {
         if (acc.length > 0 && acc[0].startsWith('-')) {
           result += `Property '${acc[2]}' was removed\n`;
           acc = [key, value, endpoint];
-          return acc;
+          return;
         }
         acc = [key, value, endpoint];
-        return acc;
+        return;
       }
 
       if (key.startsWith('+')) {
         if (acc.length > 0 && acc[0].startsWith('-')) {
           if (acc[0].slice(2) === key.slice(2)) {
             result += `Property '${endpoint}' was updated. From ${acc[1]} to ${value}\n`;
-            return [];
+            acc = [];
+            return;
           }
           result += `Property '${acc[2]}' was removed\n`;
         }
         if (typeof value === 'object' && value !== null) {
           result += `Property '${endpoint}' was added with value: ${value}\n`;
-          return [];
+          acc = [];
+          return;
         }
         result += `Property '${endpoint}' was added with value: ${value}\n`;
-        return [];
+        acc = [];
       }
-
-      return [];
-    }, []);
+    });
   };
 
   iter(object);
