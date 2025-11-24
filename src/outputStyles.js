@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 export const stylishOutput = (object, spacesCount = 2, prefix = ' ') => {
   let result = '{\n';
-  const startsWithSpecSymbol = /^(\+|-| )/; // if string starts with '+' or '-' or space
+  const startsWithSpecSymbol = /^(\W)/; // if string starts with non-word character
   const iter = (node, depth) => {
     let diff = '';
     Object.entries(node).forEach(([key, value]) => {
