@@ -6,14 +6,14 @@ import { parserJson, parserYml } from '../src/parsers.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+
 let parsedFirst;
 let parsedSecond;
-let filepath1;
-let filepath2;
-let filepath3;
-let filepath4;
-
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const filepath1 = getFixturePath('testFlat1.json');
+const filepath2 = getFixturePath('testFlat2.json');
+const filepath3 = getFixturePath('testFlat3.yml');
+const filepath4 = getFixturePath('testFlat4.yaml');
 
 beforeAll(() => {
   parsedFirst = {
@@ -28,11 +28,6 @@ beforeAll(() => {
     verbose: true,
     host: 'hexlet.io',
   };
-
-  filepath1 = getFixturePath('testFlat1.json');
-  filepath2 = getFixturePath('testFlat2.json');
-  filepath3 = getFixturePath('testFlat3.yml');
-  filepath4 = getFixturePath('testFlat4.yaml');
 });
 
 test('parserJsonTest', () => {
