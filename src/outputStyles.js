@@ -1,4 +1,4 @@
-/* eslint-disable array-callback-return */
+/* eslint-disable no-useless-return */
 /* eslint-disable no-param-reassign */
 export const stylishOutput = (object, spacesCount = 2, prefix = ' ') => {
   let result = '{\n';
@@ -98,6 +98,7 @@ export const plainOutput = (object) => {
         result += `Property '${endpoint}' was added with value: ${value}\n`;
         acc = [];
       }
+      return;
     });
   };
 
