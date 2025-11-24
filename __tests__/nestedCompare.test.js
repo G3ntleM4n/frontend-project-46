@@ -10,13 +10,17 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const object1 = parserJson(getFixturePath('testNested1.json'));
-const object2 = parserJson(getFixturePath('testNested2.json'));
-const object3 = parserYml(getFixturePath('testNested3.yml'));
-const object4 = parserYml(getFixturePath('testNested4.yaml'));
+let object1;
+let object2;
+let object3;
+let object4;
 let diff;
 
 beforeAll(() => {
+  object1 = parserJson(getFixturePath('testNested1.json'));
+  object2 = parserJson(getFixturePath('testNested2.json'));
+  object3 = parserYml(getFixturePath('testNested3.yml'));
+  object4 = parserYml(getFixturePath('testNested4.yaml'));
   diff = {
     '  common': {
       '+ follow': false,

@@ -9,15 +9,20 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const object1 = parserJson(getFixturePath('testFlat1.json'));
-const object2 = parserJson(getFixturePath('testFlat2.json'));
-const object3 = parserYml(getFixturePath('testFlat3.yml'));
-const object4 = parserYml(getFixturePath('testFlat4.yaml'));
+let object1;
+let object2;
+let object3;
+let object4;
 let diff;
 let diffSame1;
 let diffSame2;
 
 beforeAll(() => {
+  object1 = parserJson(getFixturePath('testFlat1.json'));
+  object2 = parserJson(getFixturePath('testFlat2.json'));
+  object3 = parserYml(getFixturePath('testFlat3.yml'));
+  object4 = parserYml(getFixturePath('testFlat4.yaml'));
+
   diff = {
     '- follow': false,
     '  host': 'hexlet.io',
