@@ -2,7 +2,7 @@ import path from 'node:path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { parserJson, parserYml } from '../src/parsers.js';
-import findDiff from '../src/flatCompare.js';
+import findDiff from '../src/nestedCompare.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

@@ -3,7 +3,6 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { stylishOutput, plainOutput } from '../src/outputStyles.js';
 import { parserJson, parserYml } from '../src/parsers.js';
-import findDiffFlat from '../src/flatCompare.js';
 import findDiffNested from '../src/nestedCompare.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,8 +36,8 @@ beforeAll(() => {
   object7 = parserYml(getFixturePath('testNested3.yml'));
   object8 = parserYml(getFixturePath('testNested4.yaml'));
 
-  diffFlatJson = findDiffFlat(object1, object2);
-  diffFlatYaml = findDiffFlat(object3, object4);
+  diffFlatJson = findDiffNested(object1, object2);
+  diffFlatYaml = findDiffNested(object3, object4);
   diffNestedJson = findDiffNested(object5, object6);
   diffNestedYaml = findDiffNested(object7, object8);
 
