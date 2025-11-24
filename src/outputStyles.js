@@ -42,7 +42,7 @@ export const plainOutput = (object) => {
   let result = '';
 
   const iter = (obj, path = '', acc = []) => {
-    Object.entries(obj).map(([key, value]) => {
+    Object.entries(obj).forEach(([key, value]) => {
       const endpoint = makePath(path, key.slice(2));
 
       if (key.startsWith(' ')) {
