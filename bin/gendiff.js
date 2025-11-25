@@ -3,7 +3,7 @@
 import path from 'node:path';
 import { Command } from 'commander';
 import { parserJson, parserYml } from '../src/parsers.js';
-import { stylishOutput, plainOutput } from '../src/outputStyles.js';
+import { stylishOutput, plainOutput, jsonOutput } from '../src/outputStyles.js';
 import findDiffNested from '../src/nestedCompare.js';
 
 const program = new Command();
@@ -37,6 +37,9 @@ program
     switch (formatter) {
       case 'plain':
         result = plainOutput(findDiffNested(data1, data2));
+        break;
+      case 'json':
+        result = jsonOutput(findDiffNested(data1, data2));
         break;
       default:
         result = stylishOutput(findDiffNested(data1, data2));
