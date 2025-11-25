@@ -39,8 +39,9 @@ const makePath = (path, endpoint) => (path.length > 0 ? `${path}.${endpoint}` : 
 
 export const plainOutput = (object) => {
   let result = '';
+  let acc = [];
 
-  const iter = (obj, path = '', acc = []) => {
+  const iter = (obj, path = '') => {
     Object.entries(obj).forEach(([key, value]) => {
       const endpoint = makePath(path, key.slice(2));
 
