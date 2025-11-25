@@ -54,7 +54,7 @@ export const plainOutput = (object) => {
           acc = [];
           return;
         }
-        iter(value, endpoint, acc);
+        iter(value, endpoint);
       }
 
       switch (typeof value) {
