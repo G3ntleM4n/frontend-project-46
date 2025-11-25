@@ -17,3 +17,6 @@
 
 ### Nested JSON & YAML comparison (plain formatter)
 [![asciicast](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg.svg)](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg)
+
+### Nested JSON & YAML comparison (json formatter)
+[![asciicast](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2.svg)](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2)
