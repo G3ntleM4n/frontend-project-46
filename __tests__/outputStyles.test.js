@@ -1,9 +1,11 @@
-import path from 'node:path';
+import fs from 'node:fs';
+import path, { parse } from 'node:path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { stylishOutput, plainOutput } from '../src/outputStyles.js';
+import { stylishOutput, plainOutput, jsonOutput } from '../src/outputStyles.js';
 import { parserJson, parserYml } from '../src/parsers.js';
 import findDiffNested from '../src/nestedCompare.js';
+import nestedResultJson from '../__fixtures__/nestedResult';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,9 +20,12 @@ let object5;
 let object6;
 let object7;
 let object8;
+
 let expected;
 let expectedNested;
 let expectedNestedPlain;
+let expectedNestedJson;
+
 let diffFlatJson;
 let diffFlatYaml;
 let diffNestedJson;
@@ -56,6 +61,8 @@ beforeAll(() => {
     + "\nProperty 'group1.nest' was updated. From [complex value] to 'str'"
     + "\nProperty 'group2' was removed"
     + "\nProperty 'group3' was added with value: [complex value]";
+
+  expectedNestedJson = nestedResultJson;
 });
 
 test('stylish output test', () => {
@@ -68,4 +75,8 @@ test('stylish output test', () => {
 test('plain output test', () => {
   expect(plainOutput(diffNestedJson)).toStrictEqual(expectedNestedPlain);
   expect(plainOutput(diffNestedYaml)).toStrictEqual(expectedNestedPlain);
+});
+test('json output test', () => {
+  expect(JSON.parse(jsonOutput(diffNestedJson))).toEqual(expectedNestedJson);
+  expect(JSON.parse(jsonOutput(diffNestedYaml))).toEqual(expectedNestedJson);
 });
