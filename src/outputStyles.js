@@ -103,3 +103,5 @@ export const plainOutput = (object) => {
   iter(object);
   return result.trim();
 };
+
+export const jsonOutput = (object) => JSON.stringify(object, null, 2);
