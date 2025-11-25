@@ -1,5 +1,4 @@
-import fs from 'node:fs';
-import path, { parse } from 'node:path';
+import path from 'node:path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { stylishOutput, plainOutput, jsonOutput } from '../src/outputStyles.js';
