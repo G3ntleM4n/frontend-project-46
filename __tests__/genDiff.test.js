@@ -1,16 +1,10 @@
 import nestedResultJson from '../__fixtures__/nestedResult';
 import genDiff from '../src/genDiff.js';
-import { jsonOutput, plainOutput } from '../src/outputStyles.js';
 
 let expected;
 let expectedNested;
 let expectedNestedPlain;
 let expectedNestedJson;
-
-let diffFlatJson;
-let diffFlatYaml;
-let diffNestedJson;
-let diffNestedYaml;
 
 beforeAll(() => {
   expected = '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}';
