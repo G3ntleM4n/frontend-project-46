@@ -3,7 +3,7 @@ import { parserJson, parserYml } from './parsers.js';
 import findDiffNested from './nestedCompare.js';
 import { jsonOutput, plainOutput, stylishOutput } from './outputStyles.js';
 
-const genDiff = (formatter, filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatter) => {
   let data1;
   let data2;
   let result;

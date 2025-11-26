@@ -15,7 +15,7 @@ program
   .argument('<filepath2>', 'path to the second file')
   .action((filepath1, filepath2) => {
     const formatter = program.opts().format;
-    return genDiff(formatter, filepath1, filepath2);
+    return genDiff(filepath1, filepath2, formatter);
   });
 
 program.parse();
