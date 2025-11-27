@@ -9,13 +9,11 @@ const program = new Command();
 program
   .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
-  .version('0.0.1')
+  .version('1.0.0')
   .option('-f, --format [type]', 'output format', 'stylish')
-  .argument('<filepath1>', 'path to the first file')
-  .argument('<filepath2>', 'path to the second file')
-  .action((filepath1, filepath2) => {
-    const formatter = program.opts().format;
-    return genDiff(filepath1, filepath2, formatter);
+  .arguments('<filepath1> <filepath2>')
+  .action((filepath1, filepath2, options) => {
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
-program.parse();
+program.parse(process.argv);

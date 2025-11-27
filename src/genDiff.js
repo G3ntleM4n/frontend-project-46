@@ -34,7 +34,6 @@ const genDiff = (filepath1, filepath2, formatter) => {
       result = stylishOutput(diff);
       break;
   }
-  console.log(result);
   return result;
 };
 export default genDiff;
