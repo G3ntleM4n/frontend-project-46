@@ -13,4 +13,4 @@ export default {
     'src/**/*.js',
   ],
   transform: {},
-};
+}

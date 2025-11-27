@@ -1,26 +1,25 @@
-/* eslint-disable quote-props */
-import path from 'node:path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { parserJson, parserYml } from '../src/parsers.js';
-import findDiffNested from '../src/nestedCompare.js';
+import path from 'node:path'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { parserJson, parserYml } from '../src/parsers.js'
+import findDiffNested from '../src/nestedCompare.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = filename => path.join(__dirname, '..', '__fixtures__', filename)
 
-let object1;
-let object2;
-let object3;
-let object4;
-let diff;
+let object1
+let object2
+let object3
+let object4
+let diff
 
 beforeAll(() => {
-  object1 = parserJson(getFixturePath('testNested1.json'));
-  object2 = parserJson(getFixturePath('testNested2.json'));
-  object3 = parserYml(getFixturePath('testNested3.yml'));
-  object4 = parserYml(getFixturePath('testNested4.yaml'));
+  object1 = parserJson(getFixturePath('testNested1.json'))
+  object2 = parserJson(getFixturePath('testNested2.json'))
+  object3 = parserYml(getFixturePath('testNested3.yml'))
+  object4 = parserYml(getFixturePath('testNested4.yaml'))
   diff = {
     '  common': {
       '+ follow': false,
@@ -30,7 +29,7 @@ beforeAll(() => {
       '+ setting3': null,
       '+ setting4': 'blah blah',
       '+ setting5': {
-        'key5': 'value5',
+        key5: 'value5',
       },
       '  setting6': {
         '  doge': {
@@ -46,28 +45,28 @@ beforeAll(() => {
       '+ baz': 'bars',
       '  foo': 'bar',
       '- nest': {
-        'key': 'value',
+        key: 'value',
       },
       '+ nest': 'str',
     },
     '- group2': {
-      'abc': 12345,
-      'deep': {
-        'id': 45,
+      abc: 12345,
+      deep: {
+        id: 45,
       },
     },
     '+ group3': {
-      'deep': {
-        'id': {
-          'number': 45,
+      deep: {
+        id: {
+          number: 45,
         },
       },
-      'fee': 100500,
+      fee: 100500,
     },
-  };
-});
+  }
+})
 
 test('nested differences test', () => {
-  expect(findDiffNested(object1, object2)).toStrictEqual(diff);
-  expect(findDiffNested(object3, object4)).toStrictEqual(diff);
-});
+  expect(findDiffNested(object1, object2)).toStrictEqual(diff)
+  expect(findDiffNested(object3, object4)).toStrictEqual(diff)
+})
