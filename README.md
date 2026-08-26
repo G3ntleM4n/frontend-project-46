@@ -5,78 +5,80 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
 
+[Русский](README.ru.md) | English
+
 # Gendiff
 
-**Gendiff** — утилита командной строки для сравнения двух конфигурационных файлов и наглядного отображения различий между ними. Поддерживаются форматы **JSON** и **YAML** (`.yml`/`.yaml`), а файлы могут быть как плоскими, так и вложенными (с любым уровнем вложенности).
+**Gendiff** is a command-line utility for comparing two configuration files and clearly displaying the differences between them. It supports **JSON** and **YAML** (`.yml`/`.yaml`) formats, and files can be either flat or nested (with any level of nesting).
 
-Утилита умеет показывать результат сравнения в трёх разных стилях вывода: `stylish` (по умолчанию), `plain` и `json`.
+The utility can display the comparison result in three different output styles: `stylish` (default), `plain`, and `json`.
 
-## Требования
+## Requirements
 
-Перед установкой убедитесь, что на компьютере установлен **Node.js** версии 18 или выше (вместе с ним автоматически устанавливается менеджер пакетов `npm`).
+Before installing, make sure **Node.js** version 18 or higher is installed on your computer (its package manager `npm` is installed automatically with it).
 
-Проверить версию Node.js:
+Check your Node.js version:
 
 ```bash
 node -v
 ```
 
-Если команда не найдена — скачайте и установите Node.js с официального сайта: <https://nodejs.org>
+If the command is not found, download and install Node.js from the official website: <https://nodejs.org>
 
-## Установка
+## Installation
 
-1. Скачайте (или клонируйте) проект и перейдите в его папку:
+1. Download (or clone) the project and go into its folder:
 
    ```bash
    cd frontend-project-46-main
    ```
 
-2. Установите зависимости проекта:
+2. Install the project dependencies:
 
    ```bash
    make install
    ```
 
-   Это сокращение для `npm ci` — оно установит все необходимые библиотеки в папку `node_modules`.
+   This is a shortcut for `npm ci` — it installs all required libraries into the `node_modules` folder.
 
-3. Сделайте утилиту доступной глобально, чтобы запускать её из любой папки командой `gendiff`:
+3. Make the utility available globally so you can run it from any folder with the `gendiff` command:
 
    ```bash
    npm link
    ```
 
-## Использование
+## Usage
 
-Общий вид команды:
-
-```bash
-gendiff [опции] <путь_к_файлу_1> <путь_к_файлу_2>
-```
-
-Если `npm link` не выполнялся, запускайте утилиту через `node`:
+General command syntax:
 
 ```bash
-node bin/gendiff.js <путь_к_файлу_1> <путь_к_файлу_2>
+gendiff [options] <path_to_file_1> <path_to_file_2>
 ```
 
-### Опции
+If you did not run `npm link`, run the utility via `node`:
 
-| Опция | Описание |
+```bash
+node bin/gendiff.js <path_to_file_1> <path_to_file_2>
+```
+
+### Options
+
+| Option | Description |
 | --- | --- |
-| `-f, --format [type]` | Формат вывода результата: `stylish` (по умолчанию), `plain` или `json` |
-| `-V, --version` | Показать версию утилиты |
-| `-h, --help` | Показать справку по командам |
+| `-f, --format [type]` | Output format: `stylish` (default), `plain`, or `json` |
+| `-V, --version` | Show the utility's version |
+| `-h, --help` | Show command help |
 
-### Поддерживаемые форматы файлов
+### Supported file formats
 
 - `.json`
 - `.yml` / `.yaml`
 
-Сравнивать можно файлы разных форматов между собой (например, JSON с YAML).
+You can compare files of different formats against each other (for example, a JSON file against a YAML file).
 
-## Примеры работы
+## Usage examples
 
-Ниже используются тестовые файлы `files/file1.json` и `files/file2.json` из проекта:
+The examples below use the sample files `files/file1.json` and `files/file2.json` from the project:
 
 **file1.json**
 
@@ -99,7 +101,7 @@ node bin/gendiff.js <путь_к_файлу_1> <путь_к_файлу_2>
 }
 ```
 
-### Формат `stylish` (по умолчанию)
+### `stylish` format (default)
 
 ```bash
 gendiff files/file1.json files/file2.json
@@ -116,9 +118,9 @@ gendiff files/file1.json files/file2.json
 }
 ```
 
-Здесь `-` означает удалённое свойство, `+` — добавленное, а свойства без знака остались без изменений.
+Here `-` means a removed property, `+` means an added property, and properties without a sign are unchanged.
 
-### Формат `plain`
+### `plain` format
 
 ```bash
 gendiff files/file1.json files/file2.json --format plain
@@ -131,7 +133,7 @@ Property 'timeout' was updated. From 50 to 20
 Property 'verbose' was added with value: true
 ```
 
-### Формат `json`
+### `json` format
 
 ```bash
 gendiff files/file1.json files/file2.json --format json
@@ -148,9 +150,9 @@ gendiff files/file1.json files/file2.json --format json
 }
 ```
 
-### Сравнение вложенных конфигураций
+### Comparing nested configurations
 
-Утилита корректно обрабатывает и вложенные структуры (файлы `files/nested1.json` и `files/nested2.json`):
+The utility also correctly handles nested structures (files `files/nested1.json` and `files/nested2.json`):
 
 ```bash
 gendiff files/nested1.json files/nested2.json --format plain
@@ -170,53 +172,53 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
 ```
 
-## Полезные команды для разработки
+## Useful commands for development
 
 ```bash
-make install         # установка зависимостей (npm ci)
-make lint             # проверка кода линтером ESLint
-make lint-fix         # автоматическое исправление ошибок линтера
-make test             # запуск тестов
-make test-coverage    # запуск тестов с отчётом о покрытии
-make publish          # тестовая публикация пакета (npm publish --dry-run)
+make install         # install dependencies (npm ci)
+make lint             # check the code with ESLint
+make lint-fix         # automatically fix linter errors
+make test             # run the tests
+make test-coverage    # run the tests with a coverage report
+make publish          # dry-run package publish (npm publish --dry-run)
 ```
 
-## Структура проекта
+## Project structure
 
 ```
 frontend-project-46-main/
 ├── bin/
-│   └── gendiff.js           # точка входа CLI-утилиты (разбор аргументов и опций)
+│   └── gendiff.js           # CLI entry point (argument and option parsing)
 ├── src/
-│   ├── genDiff.js            # основная функция: чтение файлов и выбор форматтера
-│   ├── parsers.js            # парсинг JSON и YAML файлов
-│   ├── nestedCompare.js       # построение дерева различий (в т.ч. вложенных)
-│   └── outputStyles.js        # форматирование результата: stylish, plain, json
-├── files/                    # примеры файлов для сравнения (json/yml/yaml)
-├── __fixtures__/              # тестовые данные
-├── __tests__/                 # автотесты
-├── package.json               # зависимости и команды проекта
-└── Makefile                   # короткие команды для установки/тестов/линтинга
+│   ├── genDiff.js            # main function: reading files and choosing the formatter
+│   ├── parsers.js            # JSON and YAML file parsing
+│   ├── nestedCompare.js       # builds the diff tree (including nested structures)
+│   └── outputStyles.js        # formats the result: stylish, plain, json
+├── files/                    # sample files for comparison (json/yml/yaml)
+├── __fixtures__/              # test data
+├── __tests__/                 # automated tests
+├── package.json               # project dependencies and scripts
+└── Makefile                   # short commands for install/test/lint
 ```
 
-## Видеопримеры работы
+## Video examples
 
-**Сравнение плоских JSON-файлов**
+**Comparing flat JSON files**
 
 [![asciicast](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo.svg)](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo)
 
-**Сравнение плоских YAML-файлов**
+**Comparing flat YAML files**
 
 [![asciicast](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu.svg)](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu)
 
-**Сравнение вложенных JSON и YAML (формат stylish)**
+**Comparing nested JSON & YAML (stylish formatter)**
 
 [![asciicast](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew.svg)](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew)
 
-**Сравнение вложенных JSON и YAML (формат plain)**
+**Comparing nested JSON & YAML (plain formatter)**
 
 [![asciicast](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg.svg)](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg)
 
-**Сравнение вложенных JSON и YAML (формат json)**
+**Comparing nested JSON & YAML (json formatter)**
 
 [![asciicast](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2.svg)](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2)
