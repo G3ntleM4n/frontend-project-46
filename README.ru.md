@@ -1,13 +1,8 @@
-[![Actions Status](https://github.com/G3ntleM4n/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/G3ntleM4n/frontend-project-46/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=bugs)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
+# Gendiff
+
+[![Actions Status](https://github.com/G3ntleM4n/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/G3ntleM4n/frontend-project-46/actions) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=bugs)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
 
 Русский | [English](README.md)
-
-# Gendiff
 
 **Gendiff** — утилита командной строки для сравнения двух конфигурационных файлов и наглядного отображения различий между ними. Поддерживаются форматы **JSON** и **YAML** (`.yml`/`.yaml`), а файлы могут быть как плоскими, так и вложенными (с любым уровнем вложенности).
 
@@ -80,7 +75,7 @@ node bin/gendiff.js <путь_к_файлу_1> <путь_к_файлу_2>
 
 Ниже используются тестовые файлы `files/file1.json` и `files/file2.json` из проекта:
 
-**file1.json**
+### file1.json
 
 ```json
 {
@@ -91,7 +86,7 @@ node bin/gendiff.js <путь_к_файлу_1> <путь_к_файлу_2>
 }
 ```
 
-**file2.json**
+### file2.json
 
 ```json
 {
@@ -107,7 +102,7 @@ node bin/gendiff.js <путь_к_файлу_1> <путь_к_файлу_2>
 gendiff files/file1.json files/file2.json
 ```
 
-```
+```text
 {
   - follow: false
     host: hexlet.io
@@ -126,7 +121,7 @@ gendiff files/file1.json files/file2.json
 gendiff files/file1.json files/file2.json --format plain
 ```
 
-```
+```text
 Property 'follow' was removed
 Property 'proxy' was removed
 Property 'timeout' was updated. From 50 to 20
@@ -158,7 +153,7 @@ gendiff files/file1.json files/file2.json --format json
 gendiff files/nested1.json files/nested2.json --format plain
 ```
 
-```
+```text
 Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to null
@@ -185,7 +180,7 @@ make publish          # тестовая публикация пакета (npm 
 
 ## Структура проекта
 
-```
+```text
 frontend-project-46-main/
 ├── bin/
 │   └── gendiff.js           # точка входа CLI-утилиты (разбор аргументов и опций)
@@ -203,22 +198,22 @@ frontend-project-46-main/
 
 ## Видеопримеры работы
 
-**Сравнение плоских JSON-файлов**
+### Сравнение плоских JSON-файлов
 
 [![asciicast](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo.svg)](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo)
 
-**Сравнение плоских YAML-файлов**
+### Сравнение плоских YAML-файлов
 
 [![asciicast](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu.svg)](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu)
 
-**Сравнение вложенных JSON и YAML (формат stylish)**
+### Сравнение вложенных JSON и YAML (формат stylish)
 
 [![asciicast](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew.svg)](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew)
 
-**Сравнение вложенных JSON и YAML (формат plain)**
+### Сравнение вложенных JSON и YAML (формат plain)
 
 [![asciicast](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg.svg)](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg)
 
-**Сравнение вложенных JSON и YAML (формат json)**
+### Сравнение вложенных JSON и YAML (формат json)
 
 [![asciicast](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2.svg)](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2)

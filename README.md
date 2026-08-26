@@ -1,13 +1,8 @@
-[![Actions Status](https://github.com/G3ntleM4n/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/G3ntleM4n/frontend-project-46/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=bugs)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
+# Gendiff
+
+[![Actions Status](https://github.com/G3ntleM4n/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/G3ntleM4n/frontend-project-46/actions) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=bugs)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=G3ntleM4n_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=G3ntleM4n_frontend-project-46)
 
 [Русский](README.ru.md) | English
-
-# Gendiff
 
 **Gendiff** is a command-line utility for comparing two configuration files and clearly displaying the differences between them. It supports **JSON** and **YAML** (`.yml`/`.yaml`) formats, and files can be either flat or nested (with any level of nesting).
 
@@ -80,7 +75,7 @@ You can compare files of different formats against each other (for example, a JS
 
 The examples below use the sample files `files/file1.json` and `files/file2.json` from the project:
 
-**file1.json**
+### file1.json
 
 ```json
 {
@@ -91,7 +86,7 @@ The examples below use the sample files `files/file1.json` and `files/file2.json
 }
 ```
 
-**file2.json**
+### file2.json
 
 ```json
 {
@@ -107,7 +102,7 @@ The examples below use the sample files `files/file1.json` and `files/file2.json
 gendiff files/file1.json files/file2.json
 ```
 
-```
+```text
 {
   - follow: false
     host: hexlet.io
@@ -126,7 +121,7 @@ Here `-` means a removed property, `+` means an added property, and properties w
 gendiff files/file1.json files/file2.json --format plain
 ```
 
-```
+```text
 Property 'follow' was removed
 Property 'proxy' was removed
 Property 'timeout' was updated. From 50 to 20
@@ -158,7 +153,7 @@ The utility also correctly handles nested structures (files `files/nested1.json`
 gendiff files/nested1.json files/nested2.json --format plain
 ```
 
-```
+```text
 Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to null
@@ -185,7 +180,7 @@ make publish          # dry-run package publish (npm publish --dry-run)
 
 ## Project structure
 
-```
+```text
 frontend-project-46-main/
 ├── bin/
 │   └── gendiff.js           # CLI entry point (argument and option parsing)
@@ -203,22 +198,22 @@ frontend-project-46-main/
 
 ## Video examples
 
-**Comparing flat JSON files**
+### Comparing flat JSON files
 
 [![asciicast](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo.svg)](https://asciinema.org/a/HJ2iOMlCH0NIpUll2abx0FSNo)
 
-**Comparing flat YAML files**
+### Comparing flat YAML files
 
 [![asciicast](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu.svg)](https://asciinema.org/a/WWBVwNPL2P8Xh1godohHP3FXu)
 
-**Comparing nested JSON & YAML (stylish formatter)**
+### Comparing nested JSON & YAML (stylish formatter)
 
 [![asciicast](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew.svg)](https://asciinema.org/a/Gi5ZTFTHmSCnQ9fTrEVtwB5Ew)
 
-**Comparing nested JSON & YAML (plain formatter)**
+### Comparing nested JSON & YAML (plain formatter)
 
 [![asciicast](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg.svg)](https://asciinema.org/a/KrTDoAE8tF2caHeszdfxTLkAg)
 
-**Comparing nested JSON & YAML (json formatter)**
+### Comparing nested JSON & YAML (json formatter)
 
 [![asciicast](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2.svg)](https://asciinema.org/a/zDkM3P3mLvLrki4mLlT8eB5e2)
